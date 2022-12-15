@@ -1,0 +1,97 @@
+def fichaPlayer():
+    print("\n"*50)
+    print(nomePersonagem)
+    print("Custo total de poderes: " + str(poderesSoma))
+    print("Poderes: ")
+    for item in range(len(nomesPoderes)):
+        print("\n" * 1)
+        print("Nome: " + nomesPoderes[item])
+        print("Graduações: " + str(gradCont[item]))
+        for i in range(len(nomesExtras1[item])):
+            print("Nome do extra: " + nomesExtras[i])
+            print("Valor do extra: " + str((extraValorfinal1[item])[i]))
+        for a in range(len(nomesFalhas1[item])):
+            print("Nome da falha: " + nomesFalhas[a])
+            print("Valor da falha: " + str((falhaValorfinal1[item])[a]))
+cont = 0
+poderes=[]
+poderesSoma = 0
+nomePersonagem = input("Digite o nome do seu personagem: ")
+nomesPoderes = []
+nomesExtras = []
+nomesExtras1 = []
+nomesFalhas = []
+nomesFalhas1 = []
+gradCont = []
+extraValorfinal1 = []
+extraValorfinal = []
+falhaValorfinal1 = []
+falhaValorfinal = []
+while cont == 0:
+    nomePoder = input("Digite o nome do poder: ")
+    nomesPoderes.append(nomePoder)
+    custoPoder = int(input("Digite o custo básico do efeito: "))
+    extraValores = []
+    extraSoma = 0
+    falhaValores = []
+    falhaSoma = 0
+    cont1 = 0
+    while cont1 == 0:
+        nomeExtra = input("Digite o nome do extra: ")
+        nomesExtras.append(nomeExtra)
+        extraCusto = int(input("Digite o custo do extra: "))
+        extraValorfinal.append(extraCusto)
+        extraValores.append(extraCusto)
+        escolha1 = int(input("Digite (1) se tiver outro extra ou (0) se não tiver: "))
+        if escolha1 == 0:
+            cont1 += 1
+        else:
+            print("")
+    cont1 -= 1
+    while cont1 == 0:
+        nomeFalha = input("Digite o nome da falha: ")
+        nomesFalhas.append(nomeFalha)
+        falhaCusto = int(input("Digite o custo da falha: "))
+        falhaValorfinal.append(falhaCusto)
+        falhaValores.append(falhaCusto)
+        escolha1 = int(input("Digite (1) se tiver outra falha ou (0) se não tiver: "))
+        if escolha1 == 0:
+            cont1 += 1
+        else:
+            print("")
+    grad = int(input("Quantas graduações tem nesse poder?"))
+    gradCont.append(grad)
+    nomesExtras1.append(nomesExtras)
+    nomesFalhas1.append(nomesFalhas)
+    extraValorfinal1.append((extraValorfinal))
+    falhaValorfinal1.append(falhaValorfinal)
+    for extra in extraValores:
+        extraSoma += extra
+    for falha in falhaValores:
+        falhaSoma += falha
+    soma = ((custoPoder + extraSoma - falhaSoma) * grad)
+    print("O valor total é: " + str(soma))
+    poderes.append(soma)
+    for poder in range(len(poderes)):
+        poderesSoma += poderes[poder]
+    escolha2 = int(input("Digite (1) se tiver mais um poder ou (0) se não: "))
+    if escolha2 == 0:
+        cont += 1
+    else:
+        print()
+cpower = len(nomesPoderes)
+cextr = []
+cextr1 = []
+for valorvariavel in nomesExtras1:
+    for valores in valorvariavel:
+        cextr.append(0)
+    cextr1.append(cextr)
+    cextr = []
+cfail = []
+cfail1 = []
+for sublista in nomesFalhas1:
+    for elemento in sublista:
+        cfail.append(0)
+    cfail1.append(cfail)
+    cfail = []
+fichaPlayer()
